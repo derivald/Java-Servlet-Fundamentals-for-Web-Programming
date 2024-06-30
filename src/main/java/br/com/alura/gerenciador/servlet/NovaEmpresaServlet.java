@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class NovaEmpresaServflet
  */
 @WebServlet("/novaEmpresa")
-public class NovaEmpresaServflet extends HttpServlet {
+public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -42,10 +42,13 @@ public class NovaEmpresaServflet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 		
-		//chamar o JSP
-		RequestDispatcher rd =  request.getRequestDispatcher("/novaEmpresaCriada.jsp");
 		request.setAttribute("empresa", empresa.getNome() );
-		rd.forward(request, response);
+		response.sendRedirect("listaEmpresas");
+		
+		//chamar o JSP
+//		RequestDispatcher rd =  request.getRequestDispatcher("/listaEmpresas");
+//		request.setAttribute("empresa", empresa.getNome() );
+//		rd.forward(request, response);
 		
 		
 	}
